@@ -1,62 +1,49 @@
-import './App.css'
-import { useState } from "react";
-import { nanoid } from 'nanoid';
-import { ContactList } from './ContactsList/ContactsList';
-import { Form } from './Form/Form';
-import { Section } from './Section/Section';
+import { Routes, Route} from 'react-router-dom';
+import { StartHeader } from './startHeader';
+import { lazy, Suspense } from 'react';
+import { Home } from 'Pages/Home';
+import {Movies} from 'Pages/Movies';
+import { Card } from 'Pages/Card';
+import { Cast } from 'Pages/Cast';
+import { Reviews } from 'Pages/Reviews';
 
-const INITCONTACTS = {
-  contacts: [],
-  filter: '',
-  name: '',
-  number:'',
-}
+// const Home_l = lazy(() => import("../Pages/Home"));
+
+// import('../Pages/Movies').then(module => console.log(module));
+// const Movies_l = lazy(() => import("../Pages/Movies"));
+// const Card = lazy(() => import("../Pages/Card"));
+// const Cast = lazy(() => import("../Pages/Cast"));
 
 export const App = () => {
-  const [dataPhonebook, setDataPhonebook] = useState(INITCONTACTS);
-
-  const onChange = (event) => {
-    const { name, value } = event.target;
-    setDataPhonebook({...dataPhonebook,[name]: value })
-   };
-    
-  const onSubmit = (event) => {
-    const { name, number, contacts} = dataPhonebook;
-    event.preventDefault();
-    document.getElementById("nameContact").value = '';
-    document.getElementById("numberContact").value = '';
-
-const isExist = contacts.some(
-      contact => contact.name.toLowerCase() === name.trim().toLowerCase()
-    );
-    if (isExist) {
-      alert(`${name} is in contacts`);
-      return;
-    }
-
-    setDataPhonebook({
-      ...dataPhonebook,
-      contacts: [...contacts, { id: nanoid(), name, number }],
-      filter:'',
-      name: '',
-      number: ''
-    });
-  };
-
-  const onDelete = (contactId) => {
-    setDataPhonebook({
-      ...dataPhonebook,
-      contacts: dataPhonebook.contacts.filter(contact => contact.id !== contactId)
-    });
-  };
-    
+  
   return (
     <>
-      <div className='divForm'> 
-      <Section title="Phonebook" children={<Form dataPhonebook={dataPhonebook} onSubmit={onSubmit} onChange={onChange}></Form>}></Section>
-        <Section title="Contacts" children={<ContactList dataPhonebook={dataPhonebook} onDelete={onDelete} onChange={onChange}></ContactList>}></Section>
-        </div>
+      <Suspense fallback={<div>Loading...</div>}>
+     <Routes>
+        <Route path='/' element={<StartHeader/>}>
+          <Route index element={<Home />}/>
+          <Route path='/movies' element={<Movies />}></Route>
+          <Route path='/movies/:idMovie' element={<Card />}>
+            <Route path='cast' element={<Cast />}/>
+            <Route path='reviews' element={<Reviews />}/>
+          </Route>
+        </Route>
+        <Route path='/*' element={<Home />}></Route>
+      </Routes>
+        </Suspense>
     </>
   );
 };
 
+
+    //  <Routes>
+    //     <Route path='/' element={<StartHeader/>}>
+    //       <Route index element={<Home />}/>
+    //       <Route path='/movies' element={<Movies />}></Route>
+    //       <Route path='/movies/:idMovie' element={<Card />}>
+    //         <Route path='cast' element={<Cast />}/>
+    //         <Route path='reviews' element={<Reviews />}/>
+    //       </Route>
+    //     </Route>
+    //     <Route path='/*' element={<Home />}></Route>
+    //   </Routes>

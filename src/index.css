@@ -7,6 +7,12 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+    height: '100vh';
+    justify-content: center;
+    align-items: center;
+    font-size: 40;
+    color: #fff;
+    background-color: #000000d2;
 }
 
 code {
