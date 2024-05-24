@@ -4,7 +4,7 @@ import { useParams} from 'react-router-dom';
 import { FetchReviews } from "components/utils/api/fetchReviews";
 
 
-export const Reviews = () => {
+const Reviews = () => {
     // const backLinkHref = location.state?.from ?? '/movies';
     const { idMovie} = useParams();
   return (
@@ -13,3 +13,5 @@ export const Reviews = () => {
     </main>
   );
 };
+
+export default Reviews;

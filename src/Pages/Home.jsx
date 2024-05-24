@@ -3,7 +3,7 @@
 // import { nanoid } from "nanoid";
 import { FetchTrends } from "components/utils/api/fetchTrending";
 
-export const Home = () => {
+const Home = () => {
   // const [topFilms, setTopFilms] = useState();
 
   return (
@@ -15,3 +15,5 @@ export const Home = () => {
     </main>
   );
 };
+
+export default Home;

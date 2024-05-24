@@ -5,7 +5,7 @@ import { FetchMoviesSearch } from "components/utils/api/fetchMoviesSearch";
 
   let bool = false;
 
-export const Movies = () => {
+const Movies = () => {
     const [queryParams, setQueryParams] = useSearchParams("query");
     const [querySearch, setQuerySearch] = useState('');
   
@@ -43,3 +43,5 @@ export const Movies = () => {
     </main>
   );
 };
+
+export default Movies;

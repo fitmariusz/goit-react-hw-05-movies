@@ -4,8 +4,7 @@ import { useParams} from 'react-router-dom';
 // import { useEffect, useState, Suspense } from 'react';
 
 // location.state?.from ?? 
-
-export const Card = () => {
+const Card = () => {
    const  backLinkHref= useLocation().state?.from ?? "/Moves";
     const { idMovie} = useParams();
     
@@ -16,3 +15,5 @@ export const Card = () => {
     </main>
   );
 };
+
+export default Card;
