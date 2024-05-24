@@ -1,7 +1,7 @@
 // import { useEffect, useState } from "react";
 // import axios from 'axios'
 // import { nanoid } from "nanoid";
-import { FetchTrends } from "components/utils/api/fetchTrending";
+import { FetchTrends } from "components/utils/api/Trending/fetchTrending";
 
 const Home = () => {
   // const [topFilms, setTopFilms] = useState();

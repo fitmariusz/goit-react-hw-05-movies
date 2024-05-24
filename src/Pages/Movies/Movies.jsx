@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom"
-import { FetchMoviesSearch } from "components/utils/api/fetchMoviesSearch";
+import { FetchMoviesSearch } from "components/utils/api/Movies/Search/fetchMoviesSearch";
 
 
   let bool = false;
@@ -39,7 +39,7 @@ const Movies = () => {
         <input name="searchMoviews" placeholder="Serch moviews" onChange={onChange}></input>
         <button name="Btn" onClick={onSubmit}>Search</button>
       </form>
-      {bool && querySearch!=="" && <FetchMoviesSearch></FetchMoviesSearch>}
+        {bool && querySearch !== "" && <FetchMoviesSearch></FetchMoviesSearch>}
     </main>
   );
 };

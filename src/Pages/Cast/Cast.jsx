@@ -1,5 +1,5 @@
 import { useParams} from 'react-router-dom';
-import { FetchCast } from "components/utils/api/fetchCast";
+import { FetchCast } from "components/utils/api/Cast/fetchCast";
 
 
 const Cast = () => {

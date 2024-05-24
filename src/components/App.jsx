@@ -7,13 +7,13 @@ import { lazy,Suspense } from 'react';
 // import { Cast } from 'Pages/Cast';
 // import { Reviews } from 'Pages/Reviews';
 
-const Home = lazy(() => import("../Pages/Home"));
+const Home = lazy(() => import("../Pages/Home/Home"));
 
 // import('../Pages/Movies').then(module => console.log(module));
-const Movies = lazy(() => import("../Pages/Movies"));
-const Card = lazy(() => import("../Pages/Card"));
-const Cast = lazy(() => import("../Pages/Cast"));
-const Reviews = lazy(() => import("../Pages/Reviews"));
+const Movies = lazy(() => import("../Pages/Movies/Movies"));
+const Card = lazy(() => import("../Pages/Card/Card"));
+const Cast = lazy(() => import("../Pages/Cast/Cast"));
+const Reviews = lazy(() => import("../Pages/Reviews/Reviews"));
 
 export const App = () => {
   

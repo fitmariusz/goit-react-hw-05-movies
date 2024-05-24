@@ -1,12 +1,11 @@
 import { useQuery } from 'react-query'
 import { getMovieFromId } from './getMovieFromId'
 import {Suspense } from 'react';
-import { Link, Outlet} from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
+import { Link, Nav , DetalisCard} from '../Movies.styled';
 
 
 export const FetchMovieFromId = ({ Id }) => {
-  //  const backLinkHref = location.state?.from ?? '/movies';
-  // console.log(Id);
     const { data: movieDetails, isLoading, error } = useQuery({ queryKey: ['getId'], queryFn: getMovieFromId(Id)});
   return <>
         {error && <p>Something went wrong: {error.message}</p>}
@@ -14,7 +13,7 @@ export const FetchMovieFromId = ({ Id }) => {
     {!isLoading && !error && 
      <div>
       {/* <BackLink to={backLinkHref}>Back to Movies</BackLink> */}
-      <div >
+      <DetalisCard >
         <img
           src={
             movieDetails.poster_path
@@ -36,10 +35,10 @@ export const FetchMovieFromId = ({ Id }) => {
               movieDetails.genres.map(genre => genre.name).join(', ')}
           </p>
         </div>
-      </div>
+      </DetalisCard>
       <div >
         <h3>Additional Details</h3>
-        <nav >
+        <Nav >
           <Link
             // className={navData => (navData.isActive ? css.active : css.link)}
             to="Cast"
@@ -52,7 +51,7 @@ export const FetchMovieFromId = ({ Id }) => {
           >
             Reviews
           </Link>
-        </nav>
+        </Nav>
       </div>
       <Suspense fallback={<div>Loading subpage...</div>}>
         <Outlet />

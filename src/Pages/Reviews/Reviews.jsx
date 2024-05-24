@@ -1,7 +1,7 @@
 // import { Link } from "react-router-dom";
 import { useParams} from 'react-router-dom';
 // import { useEffect, useState, Suspense } from 'react';
-import { FetchReviews } from "components/utils/api/fetchReviews";
+import { FetchReviews } from "components/utils/api/Reviews/fetchReviews";
 
 
 const Reviews = () => {
