@@ -13,12 +13,11 @@ export const FetchTrends = () => {
         {error && <p>Something went wrong: {error.message}</p>}
     {isLoading && <p>Loading...</p>}
     {!isLoading && !error &&
-      <ul>
-      {moviesTreading.results.map(({ id, title }) =>
+      moviesTreading.results.map(({ id, title }) =>
       <Li key={id}>
         <Link to={`/Movies/${id}`}
            state={{ from: location }}
           >{title}</Link></Li>)}
-           </ul>}
+          
   </>
 }
